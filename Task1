@@ -1,0 +1,37 @@
+#TASK 1
+class Board:
+    alphabtes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+                 'U', 'V', 'W', 'X',
+                 'Y', 'Z']
+    #defining the x-coordinate of the GO board such that it can be used 
+    #when specifying the location of the Black and White poin
+
+    def __init__(self, size: int = 19):
+        while (size < 2 or size > 26):
+            size = int(input('Illegal board size: '))
+
+        self.size = size
+        self.board = [[f'.' for i in range(self.size)] for j in range(self.size)]
+#nested Loop
+    def get_size(self) -> int:
+        return self.size
+
+    def __str__(self) -> str:
+        str = '    '
+        for i in range(self.size):
+            str += f'{self.alphabtes[i]} '
+        str += '\n'
+        for i in range(self.size ):
+            for j in range(self.size + 1):
+                if j == 0:
+                    str += f'{self.size- i} '
+                else:
+                    str+=f'{self.board[i][j-1]} '
+            str+='\n'
+
+        return str
+
+
+if __name__ == "__main__":
+    b = Board(19)
+    print(b)
